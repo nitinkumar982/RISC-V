@@ -162,15 +162,16 @@ openocd -f interface/ftdi/vsdsquadron.cfg -f target/sifive.cfg -c "program path/
 ## Key Learnings
 This project provides practical experience in the complete end-to-end workflow of an Edge AI application:
 
-Model Progression: Mastered the journey from polynomial regression to advanced SVM and neural network classifiers.
-Model Optimization: Applied post-training quantization to fit 52,650-parameter models onto tiny devices.
-Bare-Metal Programming: Understood how to implement ML inference from scratch in C for a RISC-V target without an OS.
+#### Model Progression: Mastered the journey from polynomial regression to advanced SVM and neural network classifiers.
+#### Model Optimization: Applied post-training quantization to fit 52,650-parameter models onto tiny devices.
+#### Bare-Metal Programming: Understood how to implement ML inference from scratch in C for a RISC-V target without an OS.
 
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
+
 ## Acknowledgments
 
-Thanks to VLSI System Design (VSD) for providing the course resources and project guidance.
-Thanks to SiFive for the FE310-G002 SoC specifications.
-Credit to scikit-learn and TensorFlow teams for their powerful machine learning frameworks.
+* Thanks to VLSI System Design (VSD) for providing the course resources and project guidance.
+* Thanks to SiFive for the FE310-G002 SoC specifications.
+* Credit to scikit-learn and TensorFlow teams for their powerful machine learning frameworks.
