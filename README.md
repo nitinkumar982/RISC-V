@@ -41,8 +41,11 @@ To build robust models, the dataset was carefully prepared using Python:
 * *Classification Dataset:* Analyzed age vs. estimated salary data with binary classification (classes 0 and 1).
 * *Data Normalization:* Scaled features for better model convergence and generalization.
 
-![Linear_Regression](images/download.png)
-
+<p align="center">
+  <img src="images/download.png" alt="Linear Regression" width="500"/>
+  <br>
+  <em>Linear Regression Analysis</em>
+</p>
 ### 2. Classification Models (Scikit-learn)
 
 * *K-Nearest Neighbors (KNN):* Implemented distance-based classification with visualization of decision boundaries.
@@ -51,11 +54,23 @@ To build robust models, the dataset was carefully prepared using Python:
   - *Polynomial Kernel:* For capturing curved decision boundaries
   - *RBF Kernel:* For highly non-linear classification tasks
 
-![KNN Classification](images/download(4).png)
+<p align="center">
+  <img src="images/download(4).png" alt="KNN Classification" width="500"/>
+  <br>
+  <em>K-Nearest Neighbors Classification</em>
+</p>
 
-![Confusion_Matrix](images/download(7).png)
+<p align="center">
+  <img src="images/download(7).png" alt="Confusion Matrix" width="500"/>
+  <br>
+  <em>Model Performance - Confusion Matrix</em>
+</p>
 
-![RBF SVM Training](images/download(5).png)
+<p align="center">
+  <img src="images/download(5).png" alt="RBF SVM Training" width="500"/>
+  <br>
+  <em>RBF Kernel SVM Training Results</em>
+</p>
 
 ### 3. Neural Networks on RISC-V Microcontrollers
 
