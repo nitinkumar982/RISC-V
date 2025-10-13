@@ -1,6 +1,17 @@
+<div align="center">
+
 # RISC-V Edge AI with VSDSquadron Pro
 
-## Overview
+### Advanced Machine Learning on Resource-Constrained Embedded Systems
+
+[![RISC-V](https://img.shields.io/badge/RISC--V-FE310--G002-blue?style=for-the-badge&logo=riscv)](https://www.sifive.com/)
+[![Python](https://img.shields.io/badge/Python-3.x-green?style=for-the-badge&logo=python)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-Lite-orange?style=for-the-badge&logo=tensorflow)](https://www.tensorflow.org/)
+
+</div>
+
+---
+##  Overview
 
 This repository documents an advanced Edge AI project focused on implementing machine learning algorithms from regression to classification (KNN → SVM) on the *VSDSquadron PRO board, powered by a **SiFive FE310-G002 RISC-V SoC*. The entire workflow, from data preprocessing and model training to 8-bit quantization and bare-metal C inference, is optimized for this low-power, resource-constrained microcontroller.
 
@@ -19,7 +30,7 @@ The primary goal is to build a complete, embedded system for machine learning cl
 
 ---
 
-## The Edge AI Challenge: Fitting ML Models in 16KB of RAM
+##  The Edge AI Challenge: Fitting ML Models in 16KB of RAM
 
 Deploying machine learning models on microcontrollers like the SiFive FE310-G002 is non-trivial. A standard floating-point model can be several megabytes in size, while the target board has only *16KB of SRAM*. This project overcomes this challenge through:
 
@@ -33,7 +44,7 @@ Deploying machine learning models on microcontrollers like the SiFive FE310-G002
 
 The project follows a structured pipeline from Python-based model development to C-based firmware deployment.
 
-### 1. Data Preprocessing & Model Training (Python)
+### 1️⃣ Data Preprocessing & Model Training (Python)
 
 To build robust models, the dataset was carefully prepared using Python:
 
@@ -46,7 +57,8 @@ To build robust models, the dataset was carefully prepared using Python:
   <br>
   <em>Linear Regression Analysis</em>
 </p>
-### 2. Classification Models (Scikit-learn)
+
+### 2️⃣ Classification Models (Scikit-learn)
 
 * *K-Nearest Neighbors (KNN):* Implemented distance-based classification with visualization of decision boundaries.
 * *Support Vector Machine (SVM):* Explored multiple kernel functions:
@@ -72,37 +84,48 @@ To build robust models, the dataset was carefully prepared using Python:
   <em>RBF Kernel SVM Training Results</em>
 </p>
 
-### 3. Neural Networks on RISC-V Microcontrollers
+### 3️⃣ Neural Networks on RISC-V Microcontrollers
 
 * *MLP Classifier:* Built Multi-Layer Perceptron with hidden layers (64, 32), ReLU activation, and Adam optimizer.
 * *Training Performance:* Achieved *96% accuracy* on 60,000 training samples with 784 features.
 * *Model Parameters:* 52,650 total trainable parameters.
 
-### 4. Post-Training Quantization (TensorFlow Lite)
+### 4️⃣ Post-Training Quantization (TensorFlow Lite)
 
 * *Model Conversion:* After training, models were converted to TensorFlow Lite format and quantized to 8-bit integer (INT8) representation.
 * *Size Reduction:* Critical step for reducing model size from megabytes to kilobytes suitable for embedded deployment.
 
-### 5. C-Code Generation & Bare-Metal Inference (RISC-V)
+### 5️⃣ C-Code Generation & Bare-Metal Inference (RISC-V)
 
 * *Model to C Array:* Converted .tflite model into C header and source files (model_params.h, model_params.c) containing quantized weights and biases as integer arrays.
 * *Lightweight Inference Engine:* Wrote simple C functions to perform neural network operations using only integer arithmetic on the RISC-V core.
 
 ---
 
-##  Hardware and Software
+## 💻 Hardware and Software
 
-#### Target Hardware
+<table>
+<tr>
+<td width="50%">
+
+#### 🔧 Target Hardware
 
 * *Board:* VSDSquadron PRO
 * *SoC:* SiFive FE310-G002 (32-bit RV32IMAC instruction set)
 * *Memory:* 16KB SRAM, 128Mbit QSPI Flash
 
-#### Development Environment
+</td>
+<td width="50%">
+
+#### 🖥 Development Environment
 
 * *AI/ML:* Python 3.x, scikit-learn, TensorFlow, NumPy, Matplotlib
-* *Embedded:* RISC-V GNU Toolchain, Freedom Studio (or similar IDE for simulation/flashing)
-* *Tools:* xxd (for model conversion), zadig-2.9.exe (for board USB drivers on Windows)
+* *Embedded:* RISC-V GNU Toolchain, Freedom Studio
+* *Tools:* xxd, zadig-2.9.exe
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -112,8 +135,8 @@ To build robust models, the dataset was carefully prepared using Python:
 
 1. *Clone the repository:*
 bash
-   git clone https://github.com/Kirti182/RISC-V-VSD.git
-   cd RISC-V-VSD
+   git clone https://github.com/nitinkumar982/RISC-V.git
+   cd RISC-V
 
 2. *Setup Python Environment:*
     bash
@@ -125,29 +148,27 @@ bash
 Prepare your classification dataset (age vs. salary or similar binary classification data).
 Place it in the data/ directory.
 
-
-Run Training & Quantization:
+#### Run Training & Quantization:
 
 Open and run the Jupyter notebooks in sequence to train models, quantize them, and generate C-arrays.
 
 
-Part B: Deploying to RISC-V Board
-1. Open Freedom Studio and Import the Project
+### Part B: Deploying to RISC-V Board
+
+#### 1. Open Freedom Studio and Import the Project
 
 Launch Freedom Studio.
 Go to File > Import... > Existing Projects into Workspace.
 Select the project directory and import it.
 
-2. Clean and Build the Project
+#### 2. Clean and Build the Project
 
 Navigate to:
 
 Project > Clean... — select the project and confirm.
 Project > Build Project — this will compile the project and generate the main.elf file.
 
-
-
-3. Run in Simulation (Optional)
+#### 3. Run in Simulation (Optional)
 
 Configure a debug launch for simulation:
 
@@ -155,11 +176,10 @@ Go to Run > Debug Configurations....
 Create or modify a SiFive GDB OpenOCD Debugging configuration.
 Ensure the Executable path points to the correct main.elf file.
 
-
 Start the simulation.
 Observe output in the Freedom Studio Console.
 
-4. Flash to VSDSquadron PRO Board
+#### 4. Flash to VSDSquadron PRO Board
 
 Connect the board via USB.
 If on Windows, use zadig-2.9.exe to install the correct USB drivers:
@@ -177,9 +197,9 @@ openocd -f interface/ftdi/vsdsquadron.cfg -f target/sifive.cfg -c "program path/
 ## Key Learnings
 This project provides practical experience in the complete end-to-end workflow of an Edge AI application:
 
-#### Model Progression: Mastered the journey from polynomial regression to advanced SVM and neural network classifiers.
-#### Model Optimization: Applied post-training quantization to fit 52,650-parameter models onto tiny devices.
-#### Bare-Metal Programming: Understood how to implement ML inference from scratch in C for a RISC-V target without an OS.
+#### * Model Progression: Mastered the journey from polynomial regression to advanced SVM and neural network classifiers.
+#### * Model Optimization: Applied post-training quantization to fit 52,650-parameter models onto tiny devices.
+#### * Bare-Metal Programming: Understood how to implement ML inference from scratch in C for a RISC-V target without an OS.
 
 
 ## License
@@ -188,5 +208,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## Acknowledgments
 
 * Thanks to VLSI System Design (VSD) for providing the course resources and project guidance.
-* Thanks to SiFive for the FE310-G002 SoC specifications.
+* Thanks to SiFive For the FE310-G002 SoC specifications.
 * Credit to scikit-learn and TensorFlow teams for their powerful machine learning frameworks.
